@@ -1,0 +1,61 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: AUTH-SERVICE
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth_service?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+   # driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#    database: mysql
+#    database-platform: org.hibernate.dialect.MySQLDialect
+
+#Spring-Actuator configuration
+management:
+  endpoints:
+    web:
+      base-path: /auth-actuator
+      exposure:
+        include:
+          - health
+          - info
+#          - restart
+  endpoint:
+    info:
+      enabled: true
+    health:
+      show-details: always
+    #restart:
+    #  enabled: true
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: AUTH-SERVICE APPLICATION
+    description: This is an application to manage admin/user-management micro-services
+    version: 3.3.4
+  author: 'Akshay singh'
+
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #      default-time-zone: http://localhost:8761/eureka
+      defaultZone: http://discaduseurakits:CYf9d55st2CugBWP@localhost:8761/eureka #it is used when service discovery has security

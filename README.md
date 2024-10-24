@@ -3,11 +3,11 @@ This project demonstrates the implementation of security using Spring Boot 3.0 a
 <hr />
 Features<br />
 User registration and login with JWT authentication<br />
-Password encryption using JWT<br />
+Password encryption using BCrypt<br />
 Role-based authorization with Spring Security<br />
 Customized access denied handling<br />
-Swagger Documentation<br />
-Technologies<br />
+Swagger Documentation<hr />
+Technologies:<br />
 Spring Boot 3.0<br />
 Spring Security<br />
 JSON Web Tokens (JWT)<br />
